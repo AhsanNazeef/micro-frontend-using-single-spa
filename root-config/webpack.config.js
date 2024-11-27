@@ -1,9 +1,9 @@
 const { merge } = require("webpack-merge");
-const singleSpaDefaults = require("webpack-config-single-spa-ts");
+const singleSpaDefaults = require("webpack-config-single-spa");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
-  const orgName = "test";
+  const orgName = "demo";
   const defaultConfig = singleSpaDefaults({
     orgName,
     projectName: "root-config",
@@ -18,6 +18,7 @@ module.exports = (webpackConfigEnv, argv) => {
       new HtmlWebpackPlugin({
         inject: false,
         template: "src/index.ejs",
+        favicon: "favicon.ico",
         templateParameters: {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
           orgName,
